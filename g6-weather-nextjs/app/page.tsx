@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SearchBar from '@/components/SearchBar';
 import WeatherCard from '@/components/WeatherCard';
 import SearchHistory from '@/components/SearchHistory';
@@ -27,6 +27,12 @@ export default function Home() {
       setLoading(false);
     }
   };
+
+  // Carga San José como ciudad por defecto al abrir la app
+  useEffect(() => {
+    fetchWeather('San José');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex flex-col items-center py-12 px-4">
