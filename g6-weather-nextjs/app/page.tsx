@@ -20,25 +20,33 @@ export default function Home() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message);
       setWeather(data);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Unknown error';
+      setError(message);
       setWeather(null);
     } finally {
       setLoading(false);
     }
   };
 
-  // Carga San José como ciudad por defecto al abrir la app
+  // Carga San José de Costa Rica como ciudad por defecto al abrir la app.
   useEffect(() => {
-    fetchWeather('San José');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const loadDefaultWeather = async () => {
+      await fetchWeather('San José,CR');
+    };
+
+    loadDefaultWeather();
   }, []);
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex flex-col items-center py-12 px-4">
       <h1 className="text-3xl font-bold mb-8 text-gray-800">App del Clima — G6</h1>
       <SearchBar onSearch={fetchWeather} isLoading={loading} />
-      <SearchHistory onSelect={fetchWeather} lastCity={weather?.city} />
+      {}
+      <SearchHistory
+        onSelect={fetchWeather}
+        lastCity={weather ? `${weather.city}, ${weather.country}` : undefined}
+      />
       {loading && <LoadingSpinner />}
       {error && <ErrorMessage message={error} />}
       {weather && !loading && <WeatherCard data={weather} />}
