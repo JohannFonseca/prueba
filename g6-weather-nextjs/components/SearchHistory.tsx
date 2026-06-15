@@ -17,14 +17,14 @@ export default function SearchHistory({ onSelect, lastCity }: Props) {
   if (history.length === 0) return null;
 
   return (
-    <div className="w-full max-w-xl mt-4">
-      <div className="flex items-center justify-between mb-2">
-        <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide">
-          Búsquedas recientes
+    <div className="mt-4 w-full max-w-xl">
+      <div className="mb-2 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-500">
+          Busquedas recientes
         </h3>
         <button
           onClick={clear}
-          className="text-xs text-gray-400 hover:text-purple-600 transition"
+          className="self-start text-xs text-gray-400 transition hover:text-purple-600 sm:self-auto"
         >
           Limpiar
         </button>
@@ -34,7 +34,7 @@ export default function SearchHistory({ onSelect, lastCity }: Props) {
           <li key={city}>
             <button
               onClick={() => onSelect(city)}
-              className="px-3 py-1 rounded-full bg-white border border-gray-200 text-sm text-gray-700 hover:border-purple-400 hover:text-purple-600 shadow-sm transition"
+              className="rounded-full border border-gray-200 bg-white px-3 py-1 text-sm text-gray-700 shadow-sm transition hover:border-purple-400 hover:text-purple-600"
             >
               {city}
             </button>
