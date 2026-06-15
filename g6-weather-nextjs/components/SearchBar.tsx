@@ -14,18 +14,19 @@ export default function SearchBar({ onSearch, isLoading }: Props) {
   };
 
   return (
-    <div className="flex gap-2 w-full max-w-xl">
+    <div className="flex w-full max-w-xl flex-col gap-2 sm:flex-row">
       <input
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
         placeholder="Buscar ciudad..."
-className="flex-1 px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-400 text-black bg-white"      />
+        className="min-h-11 flex-1 rounded-lg border border-gray-200 bg-white px-4 py-2 text-black focus:outline-none focus:ring-2 focus:ring-purple-400"
+      />
       <button
         onClick={handleSearch}
         disabled={isLoading}
-        className="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50 transition"
+        className="min-h-11 rounded-lg bg-purple-600 px-6 py-2 font-medium text-white transition hover:bg-purple-700 disabled:opacity-50"
       >
         {isLoading ? 'Buscando...' : 'Buscar'}
       </button>

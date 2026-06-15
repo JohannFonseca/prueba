@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import SearchBar from '@/components/SearchBar';
 import WeatherCard from '@/components/WeatherCard';
 import SearchHistory from '@/components/SearchHistory';
@@ -29,20 +29,21 @@ export default function Home() {
     }
   };
 
-  // Carga San José de Costa Rica como ciudad por defecto al abrir la app.
+  // Carga San Jose de Costa Rica como ciudad por defecto al abrir la app.
   useEffect(() => {
     const loadDefaultWeather = async () => {
-      await fetchWeather('San José,CR');
+      await fetchWeather('San Jose,CR');
     };
 
     loadDefaultWeather();
   }, []);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex flex-col items-center py-12 px-4">
-      <h1 className="text-3xl font-bold mb-8 text-gray-800">App del Clima — G6</h1>
+    <main className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex flex-col items-center px-4 py-8 sm:px-6 sm:py-12">
+      <h1 className="mb-6 text-center text-2xl font-bold text-gray-800 sm:mb-8 sm:text-3xl">
+        App del Clima - G6
+      </h1>
       <SearchBar onSearch={fetchWeather} isLoading={loading} />
-      {}
       <SearchHistory
         onSelect={fetchWeather}
         lastCity={weather ? `${weather.city}, ${weather.country}` : undefined}
