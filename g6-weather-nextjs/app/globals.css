@@ -24,3 +24,28 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes sunset-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.sunset-bg {
+  background: linear-gradient(
+    -45deg,
+    #ff7e5f,
+    #feb47b,
+    #ff6a88,
+    #c850c0,
+    #6a82fb
+  );
+  background-size: 400% 400%;
+  animation: sunset-shift 18s ease infinite;
+}
