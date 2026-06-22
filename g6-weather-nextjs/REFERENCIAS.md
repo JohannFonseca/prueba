@@ -34,7 +34,7 @@ Este documento recopila las fuentes de información, documentación oficial, art
 
 ## 2. Documentación de OpenWeatherMap
 
-1. **OpenWeatherMap Current Weather Data API:**
+7. **OpenWeatherMap Current Weather Data API:**
    Especificación detallada de parámetros, unidades (métrica/imperial), códigos de error e íconos dinámicos provistos para las consultas del clima actual.  
    *Enlace:* [https://openweathermap.org/current](https://openweathermap.org/current)
 
@@ -56,7 +56,7 @@ Este documento recopila las fuentes de información, documentación oficial, art
 
 ---
 
-## 🎥 4. Videos Educativos
+##     4. Videos Educativos
 
 11. **"Next.js API Routes Tutorial" (Codevolution - YouTube):**
     Video explicativo paso a paso sobre cómo estructurar controladores de backend asíncronos bajo la arquitectura de Next.js.  
