@@ -96,18 +96,10 @@ A continuación se presentan capturas del funcionamiento de la aplicación en ti
 
 La aplicación se encuentra desplegada y lista para usar en producción:
 
-🚀 **[Ver Demo en Vercel](https://grupo6-weather-nextjs16.vercel.app/)** *(Nota: Reemplaza este enlace con la URL final de tu proyecto tras realizar el deployment en Vercel).*
+URL aqui
 
 ---
 
-## 📚 Fuentes de Información y Referencias Técnicas
+## 9. Fuentes de Información y Referencias Técnicas
 
-1. **Next.js 16 Documentation (Routing y API Routes):** [https://nextjs.org/docs](https://nextjs.org/docs)
-2. **React 19.0 Hooks & State Management:** [https://react.dev/reference/react](https://react.dev/reference/react)
-3. **Tailwind CSS v4.0 Specification:** [https://tailwindcss.com/docs](https://tailwindcss.com/docs)
-4. **OpenWeatherMap Current Weather API:** [https://openweathermap.org/current](https://openweathermap.org/current)
-5. **OpenWeatherMap Geocoding API:** [https://openweathermap.org/api/geocoding-api](https://openweathermap.org/api/geocoding-api)
-6. **Vercel Project Environment Variables Guide:** [https://vercel.com/docs/projects/environment-variables](https://vercel.com/docs/projects/environment-variables)
-7. **MDN Web Docs - Fetch API:** [https://developer.mozilla.org/es/docs/Web/API/Fetch_API](https://developer.mozilla.org/es/docs/Web/API/Fetch_API)
-8. **TypeScript Compiler & Language Handbook:** [https://www.typescriptlang.org/docs/](https://www.typescriptlang.org/docs/)
-9. **W3C CSS Backgrounds and Borders Module Level 3:** [https://www.w3.org/TR/css-backgrounds-3/](https://www.w3.org/TR/css-backgrounds-3/)
+Las referencias y fuentes de información consultadas para la justificación teórica y técnica del proyecto se encuentran detalladas en el archivo [REFERENCIAS.md](./REFERENCIAS.md).
