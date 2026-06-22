@@ -12,22 +12,57 @@ El proyecto está construido utilizando **[Next.js 16.2](https://nextjs.org/)** 
 
 ---
 
-## 2. Setup (Instalación y Configuración Local)
+## 2. Setup (Instalación y Configuración desde Cero)
 
-Para clonar e iniciar el servidor de desarrollo localmente:
+Sigue estos pasos paso a paso si es tu primera vez configurando o corriendo este tipo de proyectos:
 
-1. **Instalar dependencias de Node.js:**
+### Paso 1: Instalar Node.js
+Esta aplicación requiere Node.js para ejecutarse.
+1. Ve a la página oficial de [Node.js (https://nodejs.org/)](https://nodejs.org/) y descarga la versión **LTS** recomendada para tu sistema operativo.
+2. Ejecuta el instalador descargado y sigue las instrucciones en pantalla.
+3. Para comprobar que se instaló correctamente, abre la terminal de tu computadora y ejecuta:
    ```bash
-   npm install
+   node -v
+   npm -v
+   ```
+   *(Deberían aparecerte números de versión en la pantalla, por ejemplo: `v20.x.x` y `10.x.x`).*
+
+### Paso 2: Descargar el Código del Proyecto
+Puedes obtener el código de dos maneras:
+- **Opción A (Recomendada si usas Git):** Abre tu terminal en la carpeta donde guardas tus proyectos y clona el repositorio corriendo:
+  ```bash
+  git clone https://github.com/Dann233/grupo6-weather-nextjs16.git
+  ```
+- **Opción B:** Descarga el proyecto en formato `.zip` desde el botón verde "Code" en GitHub, descomprímelo en tu computadora y cambia el nombre de la carpeta a `grupo6-weather-nextjs16`.
+
+### Paso 3: Abrir la Terminal en la Carpeta del Proyecto
+1. Si usas **Visual Studio Code**, ve a `Archivo > Abrir carpeta...` y selecciona la carpeta descomprimida o clonada.
+2. Abre una terminal integrada de VS Code yendo al menú superior: `Terminal > Nueva terminal`.
+3. Asegúrate de estar dentro de la subcarpeta donde está la aplicación de Next.js (`g6-weather-nextjs`). Para entrar, escribe esto en la terminal y presiona Enter:
+   ```bash
+   cd g6-weather-nextjs
    ```
 
-2. **Iniciar el servidor de desarrollo:**
-   ```bash
-   npm run dev
-   ```
+### Paso 4: Instalar las Dependencias
+Una vez posicionado dentro de la carpeta `g6-weather-nextjs`, ejecuta el siguiente comando para descargar todos los paquetes necesarios del proyecto (como React y Next.js):
+```bash
+npm install
+```
+*(Esto creará automáticamente una carpeta llamada `node_modules` en tu proyecto).*
 
-3. **Acceder a la aplicación:**
-   Abre [http://localhost:3000](http://localhost:3000) en tu navegador web.
+### Paso 5: Configurar la API Key
+*Antes de correr la aplicación, debes configurar tu clave de OpenWeatherMap. Ve a la **Sección 6** de esta guía para ver cómo crear tu archivo `.env.local`.*
+
+### Paso 6: Iniciar el Servidor de Desarrollo
+Una vez configurado tu archivo `.env.local`, ejecuta el siguiente comando en la terminal:
+```bash
+npm run dev
+```
+Este comando iniciará el servidor web local. Verás un mensaje que dice que la aplicación está lista en `http://localhost:3000`.
+
+### Paso 7: Abrir la Aplicación
+Abre tu navegador de internet favorito (Chrome, Safari, Edge, etc.) e ingresa a la siguiente dirección:
+👉 **[http://localhost:3000](http://localhost:3000)**
 
 ---
 
