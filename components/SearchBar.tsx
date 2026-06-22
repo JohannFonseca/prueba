@@ -21,8 +21,11 @@ export default function SearchBar({ onSearch, isLoading }: Props) {
   useEffect(() => {
     const query = input.trim();
     if (query.length < 2) {
-      setSuggestions([]);
-      return;
+      // Clear suggestions inside an effect asynchronously to avoid synchronous setState trigger
+      const timer = setTimeout(() => {
+        setSuggestions([]);
+      }, 0);
+      return () => clearTimeout(timer);
     }
 
     const timer = setTimeout(async () => {
