@@ -1,95 +1,84 @@
 # ⛅ App del Clima - Grupo 6 (G6)
 
-Una aplicación web moderna y dinámica para consultar el clima en tiempo real, construida con **Next.js 16**, **React 19** y **Tailwind CSS v4**. La interfaz cuenta con un diseño *glassmorphism* optimizado para la legibilidad sobre un fondo gradiente animado inspirado en el atardecer, ofreciendo una experiencia de usuario premium y fluida.
+Una aplicación web moderna y responsiva para consultar el clima en tiempo real, construida con un diseño premium *glassmorphism* que optimiza la legibilidad del texto sobre un fondo de gradiente animado.
 
 ---
 
-## Características Principales
+## 1. Framework Usado
 
-1. **Búsqueda Aproximada con Autocompletado:**
-   - Consultas en tiempo real al escribir (mínimo 2 caracteres).
-   - *Debounce* de 300ms integrado para evitar sobrecarga de peticiones al servidor geocodificador.
-   - Lista desplegable con sugerencias de ciudades interactivas.
-
-2. **Historial de Búsquedas Recientes:**
-   - Persistencia local mediante un hook personalizado para almacenar las últimas búsquedas del usuario.
-   - Acceso rápido a ciudades consultadas anteriormente con un solo clic.
-   - Opción para limpiar el historial de forma instantánea.
-
-3. **Interfaz Premium (Glassmorphism & Animaciones):**
-   - Fondo gradiente animado (`sunset-bg`) que fluye suavemente mediante animaciones de fotogramas clave (`keyframes`).
-   - Contenedor con efecto de vidrio esmerilado (`backdrop-blur-md` y opacidad blanca al 75%) que garantiza la legibilidad de todos los textos sobre el fondo dinámico.
-   - Diseño 100% responsivo adaptable a dispositivos móviles, tablets y ordenadores de escritorio.
+El proyecto está construido utilizando **[Next.js 16.2](https://nextjs.org/)** (con **React 19**). 
+- **Razones del uso:** Permite el uso de rutas API en el servidor para realizar peticiones seguras sin exponer credenciales sensibles en el navegador del usuario, además de proveer soporte nativo y optimizado para despliegues rápidos en Vercel.
+- **Herramientas de estilizado:** **Tailwind CSS v4** para un sistema de diseño moderno con variables CSS puras y **TypeScript 5** para garantizar la seguridad de tipado en toda la base de código.
 
 ---
 
-## Stack Tecnológico
+## 2. Setup (Instalación y Configuración Local)
 
-- **Framework:** [Next.js 16.2](https://nextjs.org/) (Rutas de API y Renderizado del lado del cliente).
-- **Librería de UI:** [React 19.2](https://react.dev/) (Hooks: `useState`, `useEffect`, `useRef`).
-- **Estilos:** [Tailwind CSS v4.0](https://tailwindcss.com/) (Temas en línea, variables CSS y utilidades nativas).
-- **Lenguaje:** [TypeScript 5](https://www.typescriptlang.org/) (Tipado estricto para datos climáticos y sugerencias geográficas).
-- **API Climática:** [OpenWeatherMap API](https://openweathermap.org/api) (Endpoints de Clima Actual y Geocodificación Directa).
+Para clonar e iniciar el servidor de desarrollo localmente:
 
----
-
-## Desarrollo Local
-
-### Requisitos Previos
-- Node.js (versión 18.0 o superior)
-- npm o pnpm
-
-### Pasos para Configurar e Iniciar:
-
-1. **Instalar Dependencias:**
+1. **Instalar dependencias de Node.js:**
    ```bash
    npm install
    ```
 
-2. **Configurar Variables de Entorno:**
-   Crea un archivo llamado `.env.local` en la raíz de la carpeta del proyecto y agrega tu API Key de OpenWeatherMap:
-   ```env
-   OWM_API_KEY=tu_api_key_aqui
-   ```
-
-3. **Ejecutar en Servidor de Desarrollo:**
+2. **Iniciar el servidor de desarrollo:**
    ```bash
    npm run dev
    ```
 
-4. **Ver la Aplicación:**
-   Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
+3. **Acceder a la aplicación:**
+   Abre [http://localhost:3000](http://localhost:3000) en tu navegador web.
 
 ---
 
-## Guía de Publicación en Vercel
+## 3. Conceptos Clave
 
-Vercel es la plataforma ideal para desplegar proyectos de Next.js debido a su soporte nativo y optimización de cero configuración. Sigue estos pasos para publicar la aplicación:
-
-### Paso 1: Subir el Proyecto a GitHub
-1. Crea un repositorio en tu cuenta de GitHub (ej. `grupo6-weather-nextjs16`).
-2. Sube el código del proyecto a la rama principal (`main`).
-
-### Paso 2: Importar el Proyecto en Vercel
-1. Inicia sesión en [Vercel](https://vercel.com/) (puedes usar tu cuenta de GitHub).
-2. En el panel principal, haz clic en **"Add New"** y selecciona **"Project"**.
-3. Importa el repositorio de GitHub de tu aplicación del clima.
-
-### Paso 3: Configurar Variables de Entorno (Crítico)
-Antes de hacer clic en Deploy, debes configurar la API Key de OpenWeatherMap en Vercel:
-1. En la pantalla de configuración del proyecto, busca la sección **"Environment Variables"**.
-2. Agrega la siguiente variable:
-   - **Key:** `OWM_API_KEY`
-   - **Value:** *[Inserta tu API Key activa de OpenWeatherMap]*
-3. Haz clic en **"Add"**.
-
-### Paso 4: Desplegar (Deploy)
-1. Haz clic en el botón **"Deploy"**.
-2. Vercel compilará la aplicación (ejecutando `next build`) y generará una URL pública y segura (HTTPS) para compartir.
+- **Rutas API Seguras (BFF - Backend For Frontend):** Toda consulta a la API de OpenWeatherMap se enruta a través de `/api/weather` y `/api/geocode`. Esto protege la API Key, evitando que se exponga en el código del lado del cliente.
+- **Mecanismo de Debounce (300ms):** En el componente de búsqueda aproximada, las sugerencias de ciudades esperan a que el usuario deje de escribir durante 300ms antes de disparar la consulta HTTP, reduciendo drásticamente las peticiones innecesarias.
+- **Hook Personalizado (`useSearchHistory`):** Lógica encapsulada para persistir y recuperar el historial de búsquedas del usuario de forma dinámica a través de la API de `localStorage`.
+- **Efecto Glassmorphism:** Implementación visual a través de filtros de fondo (`backdrop-blur-md`) combinados con una capa de color blanca translúcida (`bg-white/75`) y un borde suave, asegurando que todos los textos mantengan un alto contraste a pesar del fondo animado.
+- **Animaciones por Hardware:** Uso de animaciones basadas en `@keyframes` de CSS para la transición fluida de colores en el fondo sin sobrecargar el hilo principal del procesador.
 
 ---
 
-## Capturas de Pantalla
+## 4. Pros y Contras
+
+### Pros
+* **Seguridad de Credenciales:** Las API Keys están 100% protegidas en variables de entorno del servidor.
+* **Excelente Legibilidad:** El contenedor glassmorphism resuelve el contraste sobre fondos muy coloridos o móviles.
+* **Eficiencia en Red:** El autocompletado optimizado con *debounce* reduce el tráfico de red de la aplicación.
+* **Carga Instantánea:** Compilado optimizado gracias al nuevo compilador Turbopack integrado en Next.js 16.
+
+### Contras
+* **Dependencia de APIs Externas:** Al usar el geocodificador gratuito de OpenWeatherMap, la velocidad de autocompletado depende directamente de la latencia de sus servidores.
+* **Tiempo de Activación de API Key:** Las nuevas llaves de OpenWeatherMap pueden tardar hasta 2 horas en activarse globalmente, lo cual puede causar confusión inicial al configurar el entorno.
+
+---
+
+## 5. Características Implementadas
+
+1. **Búsqueda Aproximada interactiva** con listado inteligente de sugerencias al escribir (mínimo 2 caracteres).
+2. **Tarjeta de Información del Clima Completa** que detalla: Ciudad, País, Estado de clima (con ícono descriptivo), Temperatura actual, Sensación térmica, Porcentaje de humedad, y Velocidad del viento.
+3. **Historial persistente de búsquedas recientes** en burbujas dinámicas con opción de limpieza de datos.
+4. **Fondo de gradiente animado** inspirado en un atardecer que cambia sus tonalidades de forma continua.
+5. **Diseño Responsivo adaptado** a móviles, tabletas y ordenadores portátiles.
+
+---
+
+## 6. Cómo Configurar la API Key Localmente
+
+Para que las consultas al clima funcionen localmente, debes indicarle tu clave de OpenWeatherMap a Next.js:
+
+1. Crea un archivo con nombre **`.env.local`** en la carpeta raíz del proyecto (`g6-weather-nextjs`).
+2. Agrega la clave obtenida de OpenWeatherMap en la siguiente variable de entorno:
+   ```env
+   OWM_API_KEY=tu_api_key_aqui
+   ```
+3. Guarda el archivo y reinicia tu terminal (`npm run dev`) para aplicar los cambios.
+
+---
+
+## 7. Capturas de Pantalla
 
 A continuación se presentan capturas del funcionamiento de la aplicación en tiempo real:
 
@@ -103,25 +92,22 @@ A continuación se presentan capturas del funcionamiento de la aplicación en ti
 
 ---
 
-## Fuentes de Información y Referencias Técnicas
+## 8. URL de la Demo
 
-Para el desarrollo y fundamentación técnica de esta aplicación se consultaron y aplicaron las directrices de las siguientes fuentes oficiales:
+La aplicación se encuentra desplegada y lista para usar en producción:
 
-1. **Next.js 16 Documentation (Routing y API Routes):** Guías oficiales sobre el enrutamiento basado en la carpeta `app` y la creación de endpoints de backend seguros bajo `/api/`.  
-   *URL:* [https://nextjs.org/docs](https://nextjs.org/docs)
-2. **React 19.0 Hooks & State Management:** Documentación sobre el ciclo de vida de componentes funcionales y optimización de renderizados mediante `useEffect` y `useRef`.  
-   *URL:* [https://react.dev/reference/react](https://react.dev/reference/react)
-3. **Tailwind CSS v4.0 Specification:** Detalles sobre el nuevo motor de estilos CSS y la integración de utilidades para desenfoques de fondo (*backdrop blur*) y temas personalizados.  
-   *URL:* [https://tailwindcss.com/docs](https://tailwindcss.com/docs)
-4. **OpenWeatherMap Current Weather API:** Estructura de respuestas JSON y especificación de parámetros para la consulta de condiciones atmosféricas globales.  
-   *URL:* [https://openweathermap.org/current](https://openweathermap.org/current)
-5. **OpenWeatherMap Geocoding API:** Integración de geocodificación directa para traducción de texto de usuario a coordenadas latitud/longitud.  
-   *URL:* [https://openweathermap.org/api/geocoding-api](https://openweathermap.org/api/geocoding-api)
-6. **Vercel Project Environment Variables Guide:** Directrices oficiales sobre la inyección segura de secretos y configuración de entornos de producción.  
-   *URL:* [https://vercel.com/docs/projects/environment-variables](https://vercel.com/docs/projects/environment-variables)
-7. **MDN Web Docs - Fetch API:** Estándar del navegador para realizar peticiones HTTP asíncronas con promesas en entornos de JavaScript modernos.  
-   *URL:* [https://developer.mozilla.org/es/docs/Web/API/Fetch_API](https://developer.mozilla.org/es/docs/Web/API/Fetch_API)
-8. **TypeScript Compiler & Language Handbook:** Tipado de interfaces complejas para la estructuración y seguridad en el flujo de datos climáticos.  
-   *URL:* [https://www.typescriptlang.org/docs/](https://www.typescriptlang.org/docs/)
-9. **W3C CSS Backgrounds and Borders Module Level 3:** Teoría sobre el manejo de fondos gradientes múltiples y transiciones suaves para animaciones por hardware.  
-   *URL:* [https://www.w3.org/TR/css-backgrounds-3/](https://www.w3.org/TR/css-backgrounds-3/)
+🚀 **[Ver Demo en Vercel](https://grupo6-weather-nextjs16.vercel.app/)** *(Nota: Reemplaza este enlace con la URL final de tu proyecto tras realizar el deployment en Vercel).*
+
+---
+
+## 📚 Fuentes de Información y Referencias Técnicas
+
+1. **Next.js 16 Documentation (Routing y API Routes):** [https://nextjs.org/docs](https://nextjs.org/docs)
+2. **React 19.0 Hooks & State Management:** [https://react.dev/reference/react](https://react.dev/reference/react)
+3. **Tailwind CSS v4.0 Specification:** [https://tailwindcss.com/docs](https://tailwindcss.com/docs)
+4. **OpenWeatherMap Current Weather API:** [https://openweathermap.org/current](https://openweathermap.org/current)
+5. **OpenWeatherMap Geocoding API:** [https://openweathermap.org/api/geocoding-api](https://openweathermap.org/api/geocoding-api)
+6. **Vercel Project Environment Variables Guide:** [https://vercel.com/docs/projects/environment-variables](https://vercel.com/docs/projects/environment-variables)
+7. **MDN Web Docs - Fetch API:** [https://developer.mozilla.org/es/docs/Web/API/Fetch_API](https://developer.mozilla.org/es/docs/Web/API/Fetch_API)
+8. **TypeScript Compiler & Language Handbook:** [https://www.typescriptlang.org/docs/](https://www.typescriptlang.org/docs/)
+9. **W3C CSS Backgrounds and Borders Module Level 3:** [https://www.w3.org/TR/css-backgrounds-3/](https://www.w3.org/TR/css-backgrounds-3/)
