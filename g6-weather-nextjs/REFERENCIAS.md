@@ -4,7 +4,7 @@ Este documento recopila las fuentes de información, documentación oficial, art
 
 ---
 
-## 🏛️    1. Documentación Oficial (Mínimo 3)
+## 1. Documentación Oficial
 
 1. **Next.js 16 (Routing & API Routes):**
    Guía oficial de Next.js sobre enrutamiento basado en la carpeta `app` y creación de endpoints de servidor (Backend-for-Frontend) para ocultar las claves de API del cliente.  
@@ -32,9 +32,9 @@ Este documento recopila las fuentes de información, documentación oficial, art
 
 ---
 
-## ⛅ 2. Documentación de OpenWeatherMap
+## 2. Documentación de OpenWeatherMap
 
-7. **OpenWeatherMap Current Weather Data API:**
+1. **OpenWeatherMap Current Weather Data API:**
    Especificación detallada de parámetros, unidades (métrica/imperial), códigos de error e íconos dinámicos provistos para las consultas del clima actual.  
    *Enlace:* [https://openweathermap.org/current](https://openweathermap.org/current)
 
@@ -44,7 +44,7 @@ Este documento recopila las fuentes de información, documentación oficial, art
 
 ---
 
-## 📝 3. Artículos Técnicos
+##  3. Artículos Técnicos
 
 9. **"How to Debounce Search Input in React" (FreeCodeCamp):**
    Artículo detallado sobre cómo optimizar barras de búsqueda con retrasos dinámicos en React, evitando sobrecarga a los servidores de mapas.  
